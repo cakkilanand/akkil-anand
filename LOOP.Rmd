@@ -1,0 +1,175 @@
+---
+title: "PREDICTION FOR NEW FUTURE HOME"
+output: html_notebook
+---
+WE ALL HAVE AN HOPE TO BUILD OR TO BUY A PROPERTY OF OUR OWN. 
+THIS IS JUST AN PUBLICATION OF FUTURE PREDICTION OF OUR PROPERTY.
+
+This is published by C.AKKIL ANAND.
+
+THANKS TO MR. THULSIDASS.
+
+THANKS TO KAAGLE.COM (FOR REFERENCE DATA).
+
+
+
+
+REFERENCE DATA:
+  
+   This is the data which is refered to our prediction 
+```{r}
+View(House_Price)
+```
+
+SUMMARY OF THE DATA:
+   
+   This sample data consists of bedrooms, bathrooms,
+   livivg area, floors, overall area, and price.
+   
+   These are some eesential data to predict our future value of the property.
+
+```{r}
+summary(House_Price)
+```
+ STRUCTURE OF OUR DATA:
+
+  These are some statistically used format.
+  
+  just for the refernce for reserch purpose
+
+
+```{r}
+str(House_Price)
+```
+
+
+ GRAPHICAL REPRESENTATION OF SAMPLE DATA:
+
+  1.BARPLOT OF SAMPLE DATA:
+
+
+```{r}
+table(House_Price$bedrooms)
+barplot(table(House_Price$bedrooms),xlab = 'no.of bedroooms', ylab = 'frequency',main ='MOST PREFERED NO.OF.BEDROOM',col=c('blue','green','red','orange','yellow'))
+```
+this barpolt reveals that "MOST PREFERED NO.OF BEDROOMS are "3" and "4".  
+                     
+```{r}
+table(House_Price$sqft_living)
+plot(table(House_Price$sqft_living),xlab='living area',ylab = 'FREQUENCY',main = 'MOST PREFERED LIVING AREA',col=c('light green'))
+```
+This barplot results that the "MOST PREFERED LIVING AREA" is between : 1000 TO 2500 sq.ft
+          
+          
+          
+          
+          
+          
+ CORRELATION OF THE SAMPLE DATA:
+
+ This the states that variable which have strong relationship between the price.
+ 
+ IS USED IN THE PROCESS OF PREDICTION WHICH MAY BE HELPFUL. 
+```{r}
+cor(House_Price)
+```
+
+
+CORRELATION GRAPH FOR THE RELATED VALUES:
+
+```{r}
+par(mfrow=c(1,2))
+library(corrplot)
+al=cor(House_Price)
+corrplot(al)
+scatter.smooth(House_Price$sqft_living,House_Price$price,main="PRICE AND SQ.FT LIVING",col=c("purple"))
+```
+ as we state that "PRICE" is our main part prediction we take best correlation of it, that "correlation between SQ.FT OF LIVING AND PRICE"
+ 
+ 
+ Other correlation are between bathroon and sq.ft of living.
+
+
+REGRESSION FOR THE SAMPLE DATA:
+
+```{r}
+myre=lm(House_Price$price~House_Price$bedrooms+House_Price$bathrooms+House_Price$sqft_living+House_Price$sqft_lot+House_Price$floors)
+summary(myre)
+```
+
+CALCULATING THE COEFFIENTS RELATED FOR THE MANNUAL CALCULATION
+
+```{r}
+cor(House_Price$sqft_living,House_Price$price)
+```
+
+```{r}
+par(mfrow=c(2,2))
+plot(myre,col="light blue")
+abline(myre)
+```
+
+
+```{r}
+myre$fitted.values
+```
+
+
+ 
+```{r}
+plot(House_Price$price,myre$fitted.values,col="yellow")
+abline(House_Price$price,myre$fitted.values)
+```
+
+
+COEFFIENTS:
+ 
+```{r}
+coef(myre)
+coef(myre)
+```
+from these coeffients we calculate future value by substuting in linear regression equation
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
